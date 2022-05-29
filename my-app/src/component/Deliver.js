@@ -18,16 +18,19 @@ class Deliver extends Component {
             .then(data => {
                 if(data)
                 {
-                    if(data.success === 'true'){
+                    if(data.success === "true"){                        
                         var dataNames = data.names.split(',');
                         var mainData = [];
-                        dataNames.array.forEach(element => {
-                            var obj ={
-                                name: element
-                            }
-                            mainData.push(obj);
-                        });
+                        // dataNames.array.forEach(element => {
+                        //     var obj ={
+                        //         name: element
+                        //     }
+                        //     mainData.push(obj);
+                        // });
+                        mainData.push(dataNames[0])
+                        mainData.push(dataNames[1])
                         this.setState({flag:true});
+                        //this.flag=true;
                         this.names = mainData;
                         alert(`Success: ${data.message}. please proceed with Validation`)
                     }
@@ -40,14 +43,14 @@ class Deliver extends Component {
 
     validateDelivery = () => {
         //api call to validate delivery and if confirmed show alert with message from backend
-        fetch(`http://localhost:8080/validateDelivery/${this.state.orderId}`, {
+        fetch(`http://127.0.0.1:5000/validateDelivery?orderId=${this.state.orderId}`, {
             method: 'GET'
             })
             .then(response => response.json())
             .then(data => {
                 if(data)
                 {
-                    if(data.success === '1'){
+                    if(data.success === "true"){
                         alert(`Success: ${data.message}. deliver package`);
                     }
                     else{
@@ -86,7 +89,7 @@ class Deliver extends Component {
                 }
                 onClick={this.validateOrderId} > {'>>'} </button> 
           </div>
-          { this.flag ?
+          
           <div>
           <div>
           <button style = {
@@ -107,7 +110,7 @@ class Deliver extends Component {
           </div>
           :
           <div></div>
-    }
+    
           </div>
         );
     }

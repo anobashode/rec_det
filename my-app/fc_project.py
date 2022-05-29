@@ -1,8 +1,8 @@
 import face_recognition
 import cv2
-from db_test_case import connect_db
 import numpy as np
 import sys
+from flask import flash
 
 # This is a demo of running face recognition on live video from your webcam. It's a little more complicated than the
 # other example, but it includes some basic performance tweaks to make things run a lot faster:
@@ -15,7 +15,7 @@ import sys
 
 # Get a reference to webcam #0 (the default one)
 
-def face_recog():
+def face_recog(str_path):
     video_capture = cv2.VideoCapture(0)
 
     # eyes_cascade = cv2.CascadeClassifier("haarcascade_eye.xml")
@@ -26,7 +26,7 @@ def face_recog():
     #for row in cursor:
     #    print("data {}".format(row))
     #path_img = row
-    hiya_image = face_recognition.load_image_file(r"../src/validate/temp.jpg")
+    hiya_image = face_recognition.load_image_file(str_path)
     hiya_face_encoding = face_recognition.face_encodings(hiya_image)[0]
 
     # yukta_image = face_recognition.load_image_file(r"C:\Users\hiyak\Downloads\yukta.jpeg")
@@ -108,7 +108,7 @@ def face_recog():
                     
                     if "Unknown" in count_names.keys():
                         if count_names["Unknown"] >5:
-                            print("Sorry, couldn't recognise you!")
+                            flash("Sorry, couldn't recognise you!")
                             flag2 = True
 
                     if "Hiya" in count_names.keys():
@@ -168,8 +168,8 @@ def face_recog():
             break
         
         if flag==True:
-            q_update_delivery_nm="update schema_name.table_name colname='HIYA' where col_name_pk='package_id'"
-            cursor = connect_db(q_update_delivery_nm)
+            #q_update_delivery_nm="update schema_name.table_name colname='HIYA' where col_name_pk='package_id'"
+            #cursor = connect_db(q_update_delivery_nm)
             break
         
         # elif flag==False==flag2:
@@ -180,3 +180,4 @@ def face_recog():
     # Release handle to the webcam
     video_capture.release()
     cv2.destroyAllWindows()
+    return flag2
