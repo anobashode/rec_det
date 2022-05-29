@@ -1,7 +1,7 @@
 # rec_det
 run App.py in anaconda -> up backend
 then in my app terminal -> npm install -> npm start
-
+**CHANGE STR_PATH TO IMAGE PATH TO IDENTIFY PERSON, THE CODE WORKS PERFECTLY INDEPENDENTLY**
 1. manually change haar cascade classifier path in fc_det for face detection to work
 2. in delivery page if already delivered orderID path added -> shows order already delivered
 3. in delivery page if orderID doesnt exist, it shows
