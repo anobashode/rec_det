@@ -26,6 +26,8 @@ def face_recog(str_path):
     #for row in cursor:
     #    print("data {}".format(row))
     #path_img = row
+    
+    # for hard code just add file path = str_path
     hiya_image = face_recognition.load_image_file(str_path)
     hiya_face_encoding = face_recognition.face_encodings(hiya_image)[0]
 
