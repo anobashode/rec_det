@@ -2,13 +2,15 @@
 run App.py in anaconda -> up backend
 then in my app terminal -> npm install -> npm start
 
-manually change haar cascade classifier path in fc_det for face detection to work
-in delivery page if already delivered orderID path added -> shows order already delivered
-in delivery page if orderID doesnt exist, it shows
-face recognition works independently
-i have hardcoded only hiya.jpeg for face recognition.
+1. manually change haar cascade classifier path in fc_det for face detection to work
+2. in delivery page if already delivered orderID path added -> shows order already delivered
+3. in delivery page if orderID doesnt exist, it shows
+4. face recognition works independently
+5. i have hardcoded only hiya.jpeg for face recognition.
+
+......
 [sql table for refer.docx](https://github.com/anobashode/rec_det/files/8794179/sql.table.for.refer.docx)
-.
+........
 2/3-> sql queries
 INSERT INTO PRJ_01_IIT.CONSIGNMENT_DETAIL (V_PACKAGE_ID, V_DEL_TO_NAME, V_DEL_TO_FACE) values( '58', 'yu', 'C:\Users\hiyak\Desktop\ject\my-app\validate\57yyu.jpg') ON DUPLICATE KEY UPDATE V_DEL_TO_FACE = 'C:\Users\hiyak\Desktop\ject\my-app\validate\57yu.jpg';
 
